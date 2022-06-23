@@ -15,6 +15,7 @@ app.use(cors());
 app.use(require('./routes/auth'));
 app.use(require('./routes/post'))
 
+
 // CONNECT TO MONGODB
 mongoose.connect(process.env.DB_CONNECT,{
   useNewUrlParser: true,

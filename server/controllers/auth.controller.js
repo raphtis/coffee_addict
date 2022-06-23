@@ -18,8 +18,8 @@ module.exports.protected = (req, res) => {
 
 // SIGNUP
 module.exports.signup = (req, res) => {
-  const { first_name, last_name, email, password } = req.body
-  if(!email || !password || !first_name || !last_name){
+  const { firstName, lastName, email, password } = req.body
+  if(!email || !password || !firstName || !lastName){
     return res.json({ error: 'Please add all fields.'})
   }
   // CHECK IF USER EXISTS WITH EMAIL ADDRESS IN DB
@@ -34,8 +34,8 @@ module.exports.signup = (req, res) => {
           const user = new User({
             email, 
             password:hashedPassword,
-            first_name,
-            last_name
+            firstName,
+            lastName
           })
           user.save()
             .then(user => {
