@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import M from 'materialize-css'
-
 const URL = 'http://localhost:8000'
 
 const Signup = () => {
@@ -44,8 +43,8 @@ const Signup = () => {
   }
 
   return (
-    <div className='my-card'>
-      <div className='card auth-card input-field'>
+    <div>
+      <div className='card input-field'>
         <h2>Coffee Addict</h2>
         <input
           type='text'
@@ -77,6 +76,42 @@ const Signup = () => {
           <Link to='/login'>Already have an account?</Link>
         </h6>
       </div>
+    
+
+    {/* UPDATED FORM STARTS HERE */}
+    <div className="row">
+      <form className="col s12">
+        <div className="row">
+          <div className="input-field col s6">
+            <i className="material-icons prefix">account_circle</i>
+            <input id="first_name" type="text" className="validate" />
+            <label for="first_name">First Name</label>
+          </div>
+
+          <div className="input-field col s6">
+            <input id="last_name" type="text" className="validate" />
+            <label for="last_name">Last Name</label>
+          </div>
+        </div>
+        <div className="row">
+          <div className="input-field col s12">
+          <i className="material-icons prefix">password</i>
+            <input id="password" type="password" className="validate" />
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <div className="row">
+          <div className="input-field col s12">
+            <i className="material-icons prefix">email</i>
+            <input id="email" type="email" className="validate" />
+            <label for="email">Email</label>
+          </div>
+        </div>
+        <button className="btn waves-effect waves-light" type="submit" name="action">Submit
+          <i class="material-icons right">send</i>
+        </button>
+      </form>
+    </div>
     </div>
   )
 }

@@ -1,0 +1,29 @@
+
+
+a { 
+  color: black !important;
+}
+
+
+
+.logout-button {
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  float: right;
+  margin-top: 18px;
+  padding: 0 15px;
+  cursor: pointer;
+}
+
+.logout-button:hover, .logout-button:active {
+  font-size: 2.5rem;
+  background-color: white;
+}
+
+
+#toast-container {
+  top: 30px;
+  right: 20px;
+  left: auto;
+}
