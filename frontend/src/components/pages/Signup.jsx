@@ -43,75 +43,52 @@ const Signup = () => {
   }
 
   return (
-    <div>
-      <div className='card input-field'>
-        <h2>Coffee Addict</h2>
-        <input
-          type='text'
-          placeholder='First Name'
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-        <input
-          type='text'
-          placeholder='Last Name'
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />  
-        <input 
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        /> 
-        <input 
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        /> 
-        <button className="btn waves-effect waves-light #4fc3f7 light-blue lighten-2
-" type="submit" name="action" onClick={() => PostData()}>Sign Up</button>
-        <h6>
-          <Link to='/login'>Already have an account?</Link>
-        </h6>
+    <div className='signup_container'>
+      <h3 className='signup_heading'>Sign Up</h3>
+      <div className="row">
+        <form className="col s12">
+          <div className="row">
+            <div className="input-field col s6">
+              <i className="material-icons prefix">account_circle</i>
+              <input id="first_name" type="text" className="validate" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+              <label for="first_name">First Name</label>
+            </div>
+
+            <div className="input-field col s6">
+              <input id="last_name" type="text" className="validate" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+              <label for="last_name">Last Name</label>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-field col s12">
+              <i className="material-icons prefix">email</i>
+              <input id="email" type="email" className="validate" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <label for="email">Email</label>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-field col s12">
+            <i className="material-icons prefix">password</i>
+              <input id="password" type="password" className="validate" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <label for="password">Password</label>
+            </div>
+          </div>
+        </form>
+
+        <div className='button_container'>
+          <button className="btn waves-effect waves-light signup_button" type="submit" name="action" onClick={(e) => PostData(e.target.value)}>Sign Up
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+
+        <div className='row'>
+          <h6 className='signup_heading'>
+            <Link to='/login'>Already have an account?</Link>
+          </h6>
+        </div>
       </div>
-    
-
-    {/* UPDATED FORM STARTS HERE */}
-    <div className="row">
-      <form className="col s12">
-        <div className="row">
-          <div className="input-field col s6">
-            <i className="material-icons prefix">account_circle</i>
-            <input id="first_name" type="text" className="validate" />
-            <label for="first_name">First Name</label>
-          </div>
-
-          <div className="input-field col s6">
-            <input id="last_name" type="text" className="validate" />
-            <label for="last_name">Last Name</label>
-          </div>
-        </div>
-        <div className="row">
-          <div className="input-field col s12">
-          <i className="material-icons prefix">password</i>
-            <input id="password" type="password" className="validate" />
-            <label for="password">Password</label>
-          </div>
-        </div>
-        <div className="row">
-          <div className="input-field col s12">
-            <i className="material-icons prefix">email</i>
-            <input id="email" type="email" className="validate" />
-            <label for="email">Email</label>
-          </div>
-        </div>
-        <button className="btn waves-effect waves-light" type="submit" name="action">Submit
-          <i class="material-icons right">send</i>
-        </button>
-      </form>
-    </div>
     </div>
   )
 }

@@ -43,26 +43,40 @@ const Login = () => {
     .catch((err) => console.log(err))
   }
   return (
-    <div className='my-card'>
-      <div className='card auth-card input-field'>
-        <h2>Coffeegram</h2>
-        <input 
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        /> 
-        <input 
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        /> 
-        <button className="btn waves-effect waves-light #4fc3f7 light-blue lighten-2
-        " type="submit" name="action" onClick={PostData}>Login</button>
-        <h6>
-          <Link to='/signup'>New user?</Link>
-        </h6>
+    <div className='login_container'>
+      <h2 className='signup_heading'>Login</h2>
+      <div className='row'>
+
+        <form className="col s12">
+          <div className="row">
+            <div className="input-field col s12">
+              <i className="material-icons prefix">email</i>
+              <input id="email" type="email" className="validate" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <label for="email">Email</label>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-field col s12">
+            <i className="material-icons prefix">password</i>
+              <input id="password" type="password" className="validate" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <label for="password">Password</label>
+            </div>
+          </div>
+        </form>
+
+        <div className="button_container">
+          <button className="btn waves-effect waves-light signup_button" type="submit" name="action" onClick={PostData}>Login
+          <i class="material-icons right">send</i>
+          </button>
+        </div>
+
+        <div className='row'>
+          <h6 className='signup_heading'>
+            <Link to='/signup'>New User?</Link>
+          </h6>
+        </div>
+
       </div>
     </div>
   )
