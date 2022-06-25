@@ -9,6 +9,7 @@ const CreatePost = () => {
   const [ title, setTitle ] = useState('')
   const [ brand, setBrand ] = useState('')
   const [ blend, setBlend ] = useState('')
+  const [ description, setDescription ] = useState('')
   const [ image, setImage ] = useState('')
   const [ url, setUrl ] = useState('')
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ const CreatePost = () => {
         title,
         brand,
         blend,
+        description,
         pic:url
       })
     })
@@ -39,7 +41,7 @@ const CreatePost = () => {
     })
     .catch((err) => console.log(err))
   }
-  }, [ title, brand, blend, url, navigate])
+  }, [ title, brand, blend, description, url, navigate])
 
 
   const postDetails = () => {
@@ -89,6 +91,13 @@ const CreatePost = () => {
             <div className="input-field col s12">
               <input id='blend' className='validate' type='text' value={blend} onChange={(e) => setBlend(e.target.value)}/>
               <label htmlFor='blend'>Blend</label>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-field col s12">
+              <input id='description' className='validate' type='text' value={description} onChange={(e) => setDescription(e.target.value)}/>
+              <label htmlFor='description'>Description</label>
             </div>
           </div>
 

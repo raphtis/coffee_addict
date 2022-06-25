@@ -28,7 +28,7 @@ module.exports.myPosts = (req, res) => {
 
 // CREATE POST WITH SERVER VALIDATION 
 module.exports.createPost = (req, res) => {
-  const { title, brand, blend, pic } = req.body
+  const { title, brand, blend, description, pic } = req.body
   if(!title || !brand || !blend){
     return res.status(422).json({ error: 'Please add all fields.'})
   }
@@ -37,6 +37,7 @@ module.exports.createPost = (req, res) => {
     title,
     brand,
     blend,
+    description,
     photo:pic,
     postedBy: req.user
   })
