@@ -52,7 +52,7 @@ const Login = () => {
             <div className="input-field col s12">
               <i className="material-icons prefix">email</i>
               <input id="email" type="email" className="validate" value={email} onChange={(e) => setEmail(e.target.value)} />
-              <label for="email">Email</label>
+              <label htmlFor="email">Email</label>
             </div>
           </div>
 
@@ -60,14 +60,14 @@ const Login = () => {
             <div className="input-field col s12">
             <i className="material-icons prefix">password</i>
               <input id="password" type="password" className="validate" value={password} onChange={(e) => setPassword(e.target.value)} />
-              <label for="password">Password</label>
+              <label htmlFor="password">Password</label>
             </div>
           </div>
         </form>
 
         <div className="button_container">
           <button className="btn waves-effect waves-light signup_button" type="submit" name="action" onClick={PostData}>Login
-          <i class="material-icons right">send</i>
+          <i className="material-icons right">send</i>
           </button>
         </div>
 

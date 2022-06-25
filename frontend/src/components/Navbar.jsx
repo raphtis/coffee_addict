@@ -16,13 +16,14 @@ const Navbar = () => {
         <li><NavLink to="/create-post"><i className='material-icons'>add_circle_outline
         </i></NavLink></li>,
         <li>
-          <button className='material-icons logout-button'
-        type="submit" onClick={()=>{
+          <div 
+            className='material-icons logout-button'
+            type="submit" onClick={()=>{
           localStorage.clear()
           dispatch({ type: "CLEAR"})
           navigate('/login', {replace: true})
         }}
-        >exit_to_app</button>
+        >exit_to_app</div>
         </li>
       ]
     }else{

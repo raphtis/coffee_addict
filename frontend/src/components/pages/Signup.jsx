@@ -31,7 +31,6 @@ const Signup = () => {
     .then(res => res.json())
     // ERROR/SUCCESS POP UP
     .then(data => {
-      console.log('HERE')
       if(data.error){
         M.toast({html: data.error, classes:'#e53935 red darken-1'})
       }else{
@@ -51,12 +50,12 @@ const Signup = () => {
             <div className="input-field col s6">
               <i className="material-icons prefix">account_circle</i>
               <input id="first_name" type="text" className="validate" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-              <label for="first_name">First Name</label>
+              <label htmlFor="first_name">First Name</label>
             </div>
 
             <div className="input-field col s6">
               <input id="last_name" type="text" className="validate" value={lastName} onChange={(e) => setLastName(e.target.value)} />
-              <label for="last_name">Last Name</label>
+              <label htmlFor="last_name">Last Name</label>
             </div>
           </div>
 
@@ -64,7 +63,7 @@ const Signup = () => {
             <div className="input-field col s12">
               <i className="material-icons prefix">email</i>
               <input id="email" type="email" className="validate" value={email} onChange={(e) => setEmail(e.target.value)} />
-              <label for="email">Email</label>
+              <label htmlFor="email">Email</label>
             </div>
           </div>
 
@@ -72,14 +71,14 @@ const Signup = () => {
             <div className="input-field col s12">
             <i className="material-icons prefix">password</i>
               <input id="password" type="password" className="validate" value={password} onChange={(e) => setPassword(e.target.value)} />
-              <label for="password">Password</label>
+              <label htmlFor="password">Password</label>
             </div>
           </div>
         </form>
 
         <div className='button_container'>
           <button className="btn waves-effect waves-light signup_button" type="submit" name="action" onClick={(e) => PostData(e.target.value)}>Sign Up
-            <i class="material-icons right">send</i>
+            <i className="material-icons right">send</i>
           </button>
         </div>
 

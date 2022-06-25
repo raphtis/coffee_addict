@@ -15,30 +15,30 @@ const CreatePost = () => {
 
   useEffect(() => {
     if(url){
-      fetch( URL + '/createpost', {
-        method: 'post',
-        headers:{
-          'Content-Type': "application/json",
-          'Authorization': "Bearer "+ localStorage.getItem('jwt')
-        },
-        body: JSON.stringify({
-          title,
-          brand,
-          blend,
-          pic:url
-        })
+    fetch( URL + '/createpost', {
+      method: 'post',
+      headers:{
+        'Content-Type': "application/json",
+        'Authorization': "Bearer "+ localStorage.getItem('jwt')
+      },
+      body:JSON.stringify({
+        title,
+        brand,
+        blend,
+        pic:url
       })
-      .then(res => res.json())
-      .then(data => {
-        if(data.error){
-          M.toast({html: data.error, classes: '#e53935 red darken-1'})
-        }else{
-          M.toast({html: 'Created post successfully!', classes: '#43a047 green darken-1'})
-          navigate('/', {replace: true});
-        }
-      })
-      .catch((err) => console.log(err))
-    }
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.error){
+        M.toast({html: data.error, classes:'#e53935 red darken-1'})
+      }else{
+        M.toast({html: 'Created post successfully!', classes: '#43a047 green darken-1'})
+        navigate('/', {replace: true});
+      }
+    })
+    .catch((err) => console.log(err))
+  }
   }, [ title, brand, blend, url, navigate])
 
 
@@ -53,7 +53,11 @@ const CreatePost = () => {
     })
     .then(res => res.json())
     .then(data => {
+      if(data.error){
+        M.toast({html: 'Please add all fields!', classes:'#e53935 red darken-1'})
+      }else{
       setUrl(data.url)
+      }
     })
     .catch(err => {
       console.log(err)
@@ -61,29 +65,54 @@ const CreatePost = () => {
   }
 
 
-
-
   return (
-    <div className="card input-field create-card">
-      <h2>Create Post</h2>
-      <input type='text' placeholder='Title' value={title} onChange={(e) => setTitle(e.target.value)}/>
-      <input type='text' placeholder='Brand' value={brand} onChange={(e) => setBrand(e.target.value)}/>
-      <input type='text' placeholder='Blend' value={blend} onChange={(e) => setBlend(e.target.value)}/>
+    <div className='createpost_container'>
+      <h3 className='signup_heading'>Create a Review</h3>
+      <div className="row">
+        <div className="col s12">
 
+          <div className="row">
+            <div className="input-field col s12">
+              <input id='title' className='validate' type='text'  value={title} onChange={(e) => setTitle(e.target.value)}/>
+              <label htmlFor='title'>Title</label>
+            </div>
+          </div>
 
-      <div className="file-field input-field">
-        <div className="btn #4fc3f7 light-blue lighten-2">
-          <span>Select Image</span>
-          <input type="file" onChange={(e) => setImage(e.target.files[0])}/>
+          <div className="row">
+            <div className="input-field col s12">
+              <input id='brand' type='text' value={brand} onChange={(e) => setBrand(e.target.value)}/>
+              <label htmlFor='brand'>Brand</label>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="input-field col s12">
+              <input id='blend' className='validate' type='text' value={blend} onChange={(e) => setBlend(e.target.value)}/>
+              <label htmlFor='blend'>Blend</label>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="file-field input-field s6">
+              <div className="btn select_img_button">
+                <span>Select Image</span>
+                <input type="file" onChange={(e) => setImage(e.target.files[0])}/>
+              </div>
+
+              <div className="file-path-wrapper">
+                <input className="file-path validate" type="text" />
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="file-path-wrapper">
-          <input className="file-path validate" type="text" />
+        <div className="button_container">
+          <button className="btn waves-effect waves-light signup_button" type="submit" name="action" onClick={() => postDetails()}>
+          Submit
+          </button>
         </div>
+
       </div>
-      <button className="btn waves-effect waves-light #4fc3f7 light-blue lighten-2" type="submit" name="action" onClick={() => postDetails()}>
-        Submit
-        </button>
     </div>
   )
 }

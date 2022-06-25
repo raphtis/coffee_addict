@@ -1,14 +1,24 @@
 * {
   font-family: 'Inconsolata', monospace;
+
 }
 
 a { 
   color: black !important;
 }
 
+.validate {
+  background-color: #52796F;
+}
+
+.input-field label {
+  color: #626262;
+}
+
 .logout-button {
   border: none;
   background-color: white;
+  color: black;
   cursor: pointer;
   float: right;
   margin-top: 18px;
@@ -24,13 +34,15 @@ a {
   text-align: center;
 }
 
-.signup_container, .login_container {
+.signup_container, .login_container, .createpost_container {
   display: grid;
   align-items: center;
+  margin-top: 1rem;
   border-radius: 20px;
   -webkit-box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
   -moz-box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
   box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
+
 }
 
 .button_container {
@@ -38,9 +50,12 @@ a {
 }
 
 .signup_button {
-  background-color: #b2b89c;
+  background-color: #52796F;
 }
 
+.select_img_button {
+  background-color: #F06543;
+}
 
 #toast-container {
   top: 30px;
