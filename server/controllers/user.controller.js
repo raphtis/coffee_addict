@@ -3,10 +3,10 @@ const Post = require('../models/post.model')
 
 // VIEW OTHER USERS PROFILE
 module.exports.userProfiles = (req, res) => {
-  User.findOne({ _id: req.params.id})
+  User.findOne({ _id:req.params.id})
   .select('-password')
   .then(user => {
-    Post.find({postedBy: req.params.id})
+    Post.find({postedBy:req.params.id})
       .populate('postedBy', '_id first_name last_name')
       .exec((err, posts) => {
         if(err){

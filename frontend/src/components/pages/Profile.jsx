@@ -13,7 +13,8 @@ const Profile = () => {
       }
     }).then(res => res.json())
     .then(result => {
-      setPics(result.myPost)
+      console.log(result)
+      setPics(result.myPosts)
     })
   }, [])
 
@@ -26,9 +27,9 @@ const Profile = () => {
           alt='User coffee'/>
         </div>
         <div>
-          <h4>{state? state.first_name: 'loading'}</h4>
+          <h4>{state?state.email : 'loading'}</h4>
           <div className="profile-stats">
-            <h6>{mypics.length} Posts</h6>
+            <h6>{mypics.length}Posts</h6>
             <h6>0 Followers</h6>
             <h6>0 Following</h6>
           </div>
@@ -38,7 +39,7 @@ const Profile = () => {
         {
           mypics.map(item => {
             return(
-              <img key={item._id} className='gallery-item' src={item.photo} alt='User coffee' />
+              <img key={item._id} className='gallery-item' src={item.photo} alt='User coffees' />
             )
           })
         }
