@@ -45,6 +45,37 @@ a {
 
 }
 
+.home-card {
+  max-width: 500px;
+  height: max-content;
+  margin: 26px auto;
+}
+
+.post-username {
+  margin-left: 10px;
+}
+
+.like_button {
+  color: red;
+  cursor: pointer;
+}
+
+.dislike_button {
+  cursor: pointer;
+}
+
+.delete_button {
+  float: right;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.comment_delete {
+  cursor: pointer;
+  float: right;
+  align-items: center;
+}
+
 .button_container {
   text-align: center;
 }
@@ -55,6 +86,42 @@ a {
 
 .select_img_button {
   background-color: #F06543;
+}
+
+.profile-page-container {
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 18px 0;
+  border-bottom: 1px solid lightgray;
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: space-evenly;
+  width: 105%;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  justify-content: space-around;
+}
+
+.gallery-item {
+  width: 40%;
+  height: 30%;
+  margin-bottom: 20px;
 }
 
 #toast-container {

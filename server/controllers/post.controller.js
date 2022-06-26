@@ -47,3 +47,102 @@ module.exports.createPost = (req, res) => {
     })
     .catch((err) => console.log(err))
 }
+
+// DELETE POST
+module.exports.deletePost = (req, res) => {
+  Post.findOne({ _id:req.params.postId })
+  .populate('postedBy', '_id')
+  .exec((err, post) => {
+    if(err || !post){
+      return res.status(422).json({ error:err })
+    }
+    if(post.postedBy._id.toString() === req.user._id.toString()){
+      post.remove()
+      .then(result => {
+        res.json(result)
+      }).catch((err) => console.log(err))
+    }
+  })
+}
+
+// LIKE POST
+module.exports.like = (req, res) => {
+  Post.findByIdAndUpdate(req.body.postId, {
+    $push:{likes:req.user._id}
+  },{
+    new:true
+  })
+  .populate('comments.postedBy', '_id name')
+  .populate('postedBy', '_id first_name last_name')
+  .exec((err, result) => {
+    if(err){
+      return res.status(422).json({ error:err })
+    }else{
+      res.json(result)
+    }
+  })
+}
+
+// UNLIKE POST
+module.exports.unlike = (req, res) => {
+  Post.findByIdAndUpdate(req.body.postId, {
+    $pull:{likes:req.user._id}
+  },{
+    new:true
+  })
+  .populate('comments.postedBy', '_id name')
+  .populate('postedBy', '_id first_name last_name')
+  .exec((err, result) => {
+    if(err){
+      return res.status(422).json({ error:err })
+    }else{
+      res.json(result)
+    }
+  })
+}
+
+// COMMENT ON POST
+module.exports.comment = (req, res) => {
+  const comment = {
+    text: req.body.text,
+    postedBy: req.user._id
+  }
+
+  Post.findByIdAndUpdate(req.body.postId, {
+    $push:{comments:comment}
+  }, {
+    new:true
+  })
+  .populate('comments.postedBy', '_id first_name last_name')
+  .populate('postedBy', '_id first_name last_name')
+  .exec((err, result) => {
+    if(err){
+      return res.status(422).json({ error:err })
+    }else{
+      res.json(result)
+    }
+  })
+}
+
+
+// DELETE COMMENT
+module.exports.deleteComment = (req, res) => {
+  Post.findById(req.params.postId)
+  .populate('comments.postedBy', '_id first_name last_name')
+  .exec((err, post) => {
+    if(err || !post){
+      return res.status(422).json({ message: 'Error occurred!'});
+    }
+    const comment = post.comments.find((comment) => comment._id.toString() === req.params.commentId.toString());
+    if(comment.postedBy._id.toString() === req.user._id.toString()){
+      const removeIndex = post.comments
+      .map(comment => comment._id.toString())
+      .indexOf(req.params.commentId);
+      post.comments.splice(removeIndex, 1);
+      post.save()
+      .then(result => {
+        res.json(result)
+      }).catch(err => console.log(err));
+    }
+  })
+}

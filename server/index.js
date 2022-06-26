@@ -13,7 +13,8 @@ app.use(cors());
 
 // ROUTES
 app.use(require('./routes/auth'));
-app.use(require('./routes/post'))
+app.use(require('./routes/post'));
+app.use(require('./routes/user'));
 
 
 // CONNECT TO MONGODB

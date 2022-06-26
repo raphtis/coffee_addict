@@ -25,7 +25,22 @@ const Home = () => {
   }, [])
 
   // DELETE POST
-
+  const deletePost = (postId) => {
+    fetch( URL + `/delete_post/${postId}`, {
+      method: 'delete',
+      headers: {
+        "Authorization": 'Bearer ' + localStorage.getItem('jwt')
+      }
+    }).then(res => res.json())
+    .then(result => {
+      console.log(result)
+      const newData = data.filter(item => {
+        return item._id !== result._id
+      })
+      setData(newData)
+      M.toast({html: 'Deleted post successfully!', classes: '#e53935 red darken-1'})
+    })
+  }
   // COMMENT ON POST
 
   // DELETE COMMENT
@@ -38,7 +53,12 @@ const Home = () => {
         data.map(item => {
           return(
             <div key={item._id} className='card home-card'>
-              <h5 className='post-username'>{item.postedBy.first_name} {item.postedBy.last_name}</h5>
+              <h5 className='post-username'>
+                {/* IF USER CLICKS OWN POST IN FEED LINKS TO USERS PROFILE */}
+                <NavLink to={item.postedBy._id !== state._id? '/profile/'+ item.postedBy._id: '/profile'}>{item.postedBy.first_name}</NavLink>
+                {item.postedBy._id === state._id && <i className='material-icons delete_button' 
+                onClick={() => deletePost(item._id)}>clear</i> }
+              </h5>
 
               <div className="card-image">
                 <img src={item.photo} alt='User profile' />
@@ -46,16 +66,16 @@ const Home = () => {
 
               <div className="card-content">
                 <i className='material-icons like_button'>favorite_border</i>
-              </div>
 
-              <h6>{item.likes.length}</h6>
-              <h6>{item.title}</h6>
-              <p>{item.brand}</p>
-              <p>{item.blend}</p>
-              <p>{item.description}</p>
-              <hr />
+                <h6>{item.likes.length}</h6>
+                <h6>{item.title}</h6>
+                <p>{item.brand}</p>
+                <p>{item.blend}</p>
+                <p>{item.description}</p>
+                <hr />
 
               <h6>COMMENTS HERE</h6>
+              </div>
             </div>
           )
         })
