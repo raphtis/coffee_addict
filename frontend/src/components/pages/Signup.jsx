@@ -5,8 +5,8 @@ import M from 'materialize-css'
 const URL = 'http://localhost:8000'
 
 const Signup = () => {
-  const [ firstName, setFirstName ] = useState('')
-  const [ lastName, setLastName ] = useState('')
+  const [ first_name, setFirst_name ] = useState('')
+  const [ last_name, setLast_name ] = useState('')
   const [ password, setPassword ] = useState('')
   const [ email, setEmail ] = useState('')
   const navigate = useNavigate();
@@ -22,8 +22,8 @@ const Signup = () => {
         'Content-Type':"application/json"
       },
       body:JSON.stringify({
-        firstName,
-        lastName,
+        first_name,
+        last_name,
         password,
         email
       })
@@ -49,12 +49,12 @@ const Signup = () => {
           <div className="row">
             <div className="input-field col s6">
               <i className="material-icons prefix">account_circle</i>
-              <input id="first_name" type="text" className="validate" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+              <input id="first_name" type="text" className="validate" value={first_name} onChange={(e) => setFirst_name(e.target.value)} />
               <label htmlFor="first_name">First Name</label>
             </div>
 
             <div className="input-field col s6">
-              <input id="last_name" type="text" className="validate" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+              <input id="last_name" type="text" className="validate" value={last_name} onChange={(e) => setLast_name(e.target.value)} />
               <label htmlFor="last_name">Last Name</label>
             </div>
           </div>

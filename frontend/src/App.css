@@ -45,6 +45,13 @@ a {
 
 }
 
+.home {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
 .home-card {
   max-width: 500px;
   height: max-content;

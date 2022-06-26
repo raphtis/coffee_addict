@@ -5,7 +5,7 @@ import Login from "./components/pages/Login";
 import Signup from "./components/pages/Signup";
 import Profile from "./components/pages/Profile";
 import CreatePost from "./components/pages/CreatePost";
-// import UserProfile from './components/pages/UserProfile';
+import UserProfile from './components/pages/UserProfile';
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { initialState, reducer } from './reducers/userReducer'
 import './App.css'
@@ -34,7 +34,7 @@ const Routing = () => {
       <Route path='/signup' element={<Signup />} />
       <Route exact path='/profile' element={<Profile />} />
       <Route path='/create-post' element={<CreatePost />} />
-      {/* <Route path='/profile/:userId' element={<UserProfile />} /> */}
+      <Route path='/profile/:userId' element={<UserProfile />} />
     </Routes>
   )
 }

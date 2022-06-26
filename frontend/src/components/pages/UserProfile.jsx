@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 const URL = 'http://localhost:8000'
-
 const UserProfile = () => {
   const [ userProfile, setProfile ] = useState(null)
   const {userId} = useParams()

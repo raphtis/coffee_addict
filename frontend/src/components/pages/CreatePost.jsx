@@ -4,7 +4,6 @@ import M from 'materialize-css'
 
 const URL = 'http://localhost:8000'
 
-
 const CreatePost = () => {
   const [ title, setTitle ] = useState('')
   const [ brand, setBrand ] = useState('')
@@ -19,7 +18,7 @@ const CreatePost = () => {
     fetch( URL + '/createpost', {
       method: 'post',
       headers:{
-        'Content-Type': "application/json",
+        'Content-Type':"application/json",
         'Authorization': "Bearer "+ localStorage.getItem('jwt')
       },
       body:JSON.stringify({
