@@ -24,6 +24,62 @@ const Home = () => {
     })
   }, [])
 
+
+  // LIKE A USERS POST
+  const likePost = (_id) => {
+    fetch( URL + '/like', {
+      method: 'put',
+      headers: {
+        "Content-Type" : 'application/json',
+        'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
+      },
+      body: JSON.stringify({
+        postId: _id
+      })
+    }).then(res=> res.json())
+    .then(result => {
+      const newData = data.map(item => {
+        if(item._id === result._id){
+          return result
+        }else{
+          return item
+        }
+      })
+      setData(newData);
+      M.toast({html: 'You liked the post!', classes: '#43a047 green darken-1'})
+    }).catch(err=> {
+      console.log(err)
+    })
+  }
+
+  // UNLIKE A POST
+  const unlikePost = (_id) => {
+    fetch( URL + '/unlike', {
+      method: 'put',
+      headers: {
+        "Content-Type" : 'application/json',
+        'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
+      },
+      body: JSON.stringify({
+        postId: _id
+      })
+    }).then(res=> res.json())
+    .then(result => {
+      const newData = data.map(item => {
+        if(item._id === result._id){
+          return result
+        }else{
+          return item
+        }
+      })
+      setData(newData);
+      M.toast({html: "You unliked the post!", classes:'#e53935 red darken-1'})
+    }).catch(err=> {
+      console.log(err)
+    })
+  }
+
+
   // DELETE POST
   const deletePost = (postId) => {
     fetch( URL + `/delete_post/${postId}`, {
@@ -42,10 +98,63 @@ const Home = () => {
     })
   }
   // COMMENT ON POST
+  const makeComment = (text, postId) => {
+    fetch( URL + '/comment', {
+      method: 'put',
+      headers: {
+        "Content-Type" : "application/json",
+        "Authorization": 'Bearer ' + localStorage.getItem('jwt')
+      },
+      body: JSON.stringify({
+        postId,
+        text
+      })
+    }).then(res=> res.json())
+    .then(result => {
+      console.log(result)
+      const newData = data.map(item => {
+        if(item._id === result._id){
+          return result
+        }else{
+          return item
+        }
+      })
+      setData(newData);
+      M.toast({html: "Comment submitted successfully!", classes:'#43a047 green darken-1'})
+    }).catch(err=>{
+      console.log(err)
+    })
+  }
 
   // DELETE COMMENT
+  const deleteComment = (postId, commentId) => {
+    fetch( URL + `/delete_comment/${postId}/${commentId}`, {
+      method: 'delete',
+      headers: {
+        "Authorization": 'Bearer ' + localStorage.getItem('jwt')
+      }
+    }).then(res => res.json())
+    .then(result => {
+      const newData = data.map(item => {
+        if(item._id === result._id){
+          result.postedBy = item.postedBy;
+          return result
+        }else{
+          return item
+        }
+      })
+      setData(newData)
+      M.toast({html: "Comment deleted successfully!", classes:'#e53935 red darken-1'})
+    })
+  }
+
 
   // CLEAR TEXT
+  const clearText = () => {
+    inputEl.current.remove()
+    window.location.reload()
+  }
+
 
   return (
     <div className="home">
@@ -65,16 +174,44 @@ const Home = () => {
               </div>
 
               <div className="card-content">
-                <i className='material-icons like_button'>favorite_border</i>
+                {item.likes.includes(state._id)?
+                <i className='material-icons like_button' onClick={() => {unlikePost(item._id)}}>favorite_border</i>
+              :
+                <i className='material-icons dislike_button' onClick={() => {likePost(item._id)}}>favorite_border</i>
+                }
 
-                <h6>{item.likes.length}</h6>
-                <h6>{item.title}</h6>
-                <p>{item.brand}</p>
-                <p>{item.blend}</p>
-                <p>{item.description}</p>
+                <h6>{item.likes.length} likes</h6>
+                <h6>Title - {item.title}</h6>
+                <p>Brand - {item.brand}</p>
+                <p>Blend - {item.blend}</p>
+                <p>Review - {item.description}</p>
                 <hr />
 
-              <h6>COMMENTS HERE</h6>
+                {
+                  item.comments.map(record => {
+                    return(
+                      <h6 key={record._id}>
+                        <span style={{fontWeight: "500"}}>{record.postedBy.first_name}</span> -  
+                        <span className='text-secondary'> {record.text}</span>
+                        {record.postedBy._id === state._id && <i className='material-icons comment_delete' onClick={() => deleteComment(item._id, record._id)}>delete_outline</i>}
+                      </h6>
+                    )
+                  })
+                }
+                <form onSubmit={(e) => {
+                  e.preventDefault()
+                  makeComment(e.target[0].value, item._id)
+                }}>
+                  <div className="comment-input-wrapper">
+                    <input 
+                      type="text" 
+                      className="comment-input"
+                      placeholder='Add a comment.'
+                      ref={inputEl}
+                      />
+                      <i className='material-icons' style={{ cursor:"pointer"}} onClick={clearText}>clear</i>
+                  </div>
+                </form>
               </div>
             </div>
           )

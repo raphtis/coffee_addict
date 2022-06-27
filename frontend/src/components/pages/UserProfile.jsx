@@ -34,9 +34,9 @@ const UserProfile = () => {
           <h4>{userProfile.user.first_name}</h4>
           <h5>{userProfile.user.email}</h5>
           <div className='profile-stats'>
-            <h6>{userProfile.posts.length} Posts</h6>
-            <h6>20 Followers</h6>
-            <h6>20 Following</h6>
+            <h6>{userProfile.posts.length} Posts|</h6>
+            <h6>0 Followers|</h6>
+            <h6>0 Following</h6>
           </div>
         </div>
       </div>

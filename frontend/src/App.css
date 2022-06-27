@@ -1,6 +1,5 @@
 * {
   font-family: 'Inconsolata', monospace;
-
 }
 
 a { 
@@ -77,11 +76,6 @@ a {
   cursor: pointer;
 }
 
-.comment_delete {
-  cursor: pointer;
-  float: right;
-  align-items: center;
-}
 
 .button_container {
   text-align: center;
@@ -131,8 +125,33 @@ a {
   margin-bottom: 20px;
 }
 
+.comment_delete {
+  cursor: pointer;
+  float: right;
+  align-items: center;
+}
+
+.comment-input {
+  width: 20px;
+}
+
+.comment-input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 #toast-container {
   top: 30px;
   right: 20px;
   left: auto;
+}
+
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #F06543 !important;
+  box-shadow: 0 1px 0 0 #F06543 !important;
+}
+
+.input-field input[type=password]:focus {
+  border-bottom: 1px solid #4fc3f7 !important;
+  box-shadow: 0 1px 0 0 #4fc3f7 !important;
 }

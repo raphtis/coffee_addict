@@ -72,7 +72,7 @@ module.exports.like = (req, res) => {
   },{
     new:true
   })
-  .populate('comments.postedBy', '_id name')
+  .populate('comments.postedBy', '_id first_name')
   .populate('postedBy', '_id first_name last_name')
   .exec((err, result) => {
     if(err){
@@ -90,7 +90,7 @@ module.exports.unlike = (req, res) => {
   },{
     new:true
   })
-  .populate('comments.postedBy', '_id name')
+  .populate('comments.postedBy', '_id first_name')
   .populate('postedBy', '_id first_name last_name')
   .exec((err, result) => {
     if(err){
