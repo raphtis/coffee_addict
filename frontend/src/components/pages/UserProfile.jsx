@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import {UserContext} from '../../App'
 import { useParams } from 'react-router-dom'
 
 const URL = 'http://localhost:8000'
 const UserProfile = () => {
   const [ userProfile, setProfile ] = useState(null)
   const {userId} = useParams()
+
 
 
   useEffect(() => {
@@ -18,6 +20,38 @@ const UserProfile = () => {
       setProfile(result)
     })
   }, [userId])
+
+  const followUser = () => {
+    fetch( URL + '/follow',{
+      method: 'put',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": 'Bearer ' + localStorage.getItem('jwt')
+      },
+      body:JSON.stringify({
+        followId:userId
+      })
+    }).then(res => res.json())
+    .then(data => {
+      console.log(data)
+    })
+  }
+
+  const unfollowUser = () => {
+    fetch ( URL + '/unfollow', {
+      method: 'put',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": 'Bearer ' + localStorage.getItem('jwt')
+      },
+      body: JSON.stringify({
+        unfollowId:userId
+      })
+    }).then(res => res.json())
+    .then(data => {
+      console.log(data)
+    })
+  }
 
   return (
     <>
@@ -38,6 +72,15 @@ const UserProfile = () => {
             <h6>0 Followers|</h6>
             <h6>0 Following</h6>
           </div>
+          <div className="button_container">
+            <button className="btn waves-effect waves-light signup_button" type="submit" name="action" onClick={followUser}>Follow
+            <i className="material-icons right">send</i>
+            </button>
+
+            <button className="btn waves-effect waves-light signup_button" type="submit" name="action" onClick={unfollowUser}>Unfollow
+            <i className="material-icons right">send</i>
+            </button>
+        </div>
         </div>
       </div>
 
