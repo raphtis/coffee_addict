@@ -33,6 +33,7 @@ module.exports.follow = (req, res) => {
     User.findByIdAndUpdate(req.user._id, {
       $push:{following: req.body.followId}
     }, {new:true})
+    .select("-password")
     .then(result =>{
       res.json(result)
     }).catch(err=>{

@@ -70,8 +70,8 @@ module.exports.login = (req, res) => {
           if(doMatch){
             // GENERATE JWT TOKEN ON LOGIN
             const token = jwt.sign({ _id:savedUser._id}, JWT_SECRET)
-            const { _id, first_name, last_name, email } = savedUser
-            res.json({ token, user:{_id, first_name, last_name, email}})
+            const { _id, first_name, last_name, email, followers, following } = savedUser
+            res.json({ token, user:{_id, first_name, last_name, email, followers, following}})
           }else{
             return res.status(422).json({ error: 'Invalid email or password!'})
           }

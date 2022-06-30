@@ -15,6 +15,19 @@ module.exports.getAll = (req, res) => {
     .catch((err) => console.log(err))
 }
 
+
+// GET ALL POSTS OF FOLLOWED USERS
+module.exports.getSubPost = (req, res) => {
+  Post.find({postedBy:{$in:req.user.following}})
+  // POPULATE INFO FROM USER WHO MADE POST
+    .populate('postedBy', '_id first_name last_name')
+    .populate('comments.postedBy', '_id first_name last_name')
+    .then(posts => {
+      res.json({ posts })
+    })
+    .catch((err) => console.log(err))
+}
+
 // POSTS CREATED BY ONE USER
 module.exports.myPosts = (req, res) => {
   Post.find({ postedBy: req.user._id })

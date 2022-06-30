@@ -5,6 +5,8 @@ import { useParams } from 'react-router-dom'
 const URL = 'http://localhost:8000'
 const UserProfile = () => {
   const [ userProfile, setProfile ] = useState(null)
+  const [ showFollow, setShowFollow ] = useState(true)
+  const { state, dispatch } = useContext(UserContext)
   const {userId} = useParams()
 
 
@@ -34,6 +36,15 @@ const UserProfile = () => {
     }).then(res => res.json())
     .then(data => {
       console.log(data)
+      dispatch({ type: "UPDATE", payload:{following:data.following, followers:data.followers}})
+      localStorage.setItem("user", JSON.stringify(data))
+      setProfile((prevState) =>{
+        return{
+          ...prevState,
+          user:{...prevState.user,followers:[...prevState.user.followers,data._id]}
+        }
+      })
+      setShowFollow(false)
     })
   }
 
@@ -49,7 +60,16 @@ const UserProfile = () => {
       })
     }).then(res => res.json())
     .then(data => {
-      console.log(data)
+      dispatch({ type: "UPDATE", payload:{following:data.following, followers:data.followers}})
+      localStorage.setItem("user", JSON.stringify(data))
+      setProfile((prevState) => {
+        const newFollower = prevState.user.followers.filter(item=>item !== data._id)
+        return{
+          ...prevState,
+          user:{...prevState.user,followers:newFollower}
+        }
+      })
+      setShowFollow(true)
     })
   }
 
@@ -69,17 +89,22 @@ const UserProfile = () => {
           <h5>{userProfile.user.email}</h5>
           <div className='profile-stats'>
             <h6>{userProfile.posts.length} Posts|</h6>
-            <h6>0 Followers|</h6>
-            <h6>0 Following</h6>
+            <h6>{userProfile.user.followers.length}  Followers|</h6>
+            <h6>{userProfile.user.following.length} Following</h6>
           </div>
+
           <div className="button_container">
+            {showFollow?
+          
             <button className="btn waves-effect waves-light signup_button" type="submit" name="action" onClick={followUser}>Follow
             <i className="material-icons right">send</i>
             </button>
-
+            :  
             <button className="btn waves-effect waves-light signup_button" type="submit" name="action" onClick={unfollowUser}>Unfollow
             <i className="material-icons right">send</i>
             </button>
+            }
+
         </div>
         </div>
       </div>
