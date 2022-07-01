@@ -9,6 +9,7 @@ An app for passionate coffee drinkers to share their review of coffee blends wit
 - React
 - Node.js
 - Express.js
+- MongoDB
 - Materialize UI
 - Bcrypt
 - JsonWebToken (JWT)
@@ -30,6 +31,5 @@ An app for passionate coffee drinkers to share their review of coffee blends wit
 
 ## Demo
 
-Insert gif or link to demo
-
-![demoPT1](assets/ezgif-1-b10d345d21.gif)
+![demoPT1](assets/gifdemo1.gif)
+![demoPT2](assets/gifdemo2.gif)
