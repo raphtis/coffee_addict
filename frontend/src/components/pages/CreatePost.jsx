@@ -81,7 +81,7 @@ const CreatePost = () => {
 
           <div className="row">
             <div className="input-field col s12">
-              <input id='brand' type='text' value={brand} onChange={(e) => setBrand(e.target.value)}/>
+              <input id='brand' className='validate' type='text' value={brand} onChange={(e) => setBrand(e.target.value)}/>
               <label htmlFor='brand'>Brand</label>
             </div>
           </div>
