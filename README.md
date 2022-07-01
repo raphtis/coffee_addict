@@ -29,7 +29,7 @@ An app for passionate coffee drinkers to share their review of coffee blends wit
 - Mobile friendly
 
 
-## Demo
-
+## Demo1
 ![demoPT1](assets/gifdemo1.gif)
+## Demo2
 ![demoPT2](assets/gifdemo2.gif)
