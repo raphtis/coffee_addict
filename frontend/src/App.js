@@ -9,6 +9,7 @@ import UserProfile from './components/pages/UserProfile';
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { initialState, reducer } from './reducers/userReducer'
 import './App.css'
+import SubUserPosts from './components/pages/SubUserPosts';
 
 export const UserContext = createContext();
 
@@ -29,12 +30,13 @@ const Routing = () => {
   }, [dispatch])
   return(
     <Routes>
-      <Route path='/' element={<Home />} />
+      <Route path='/home' element={<Home />} />
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<Signup />} />
       <Route exact path='/profile' element={<Profile />} />
       <Route path='/create-post' element={<CreatePost />} />
       <Route path='/profile/:userId' element={<UserProfile />} />
+      <Route path='/' element={<SubUserPosts />}/>
     </Routes>
   )
 }

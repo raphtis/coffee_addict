@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-escape */
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import M from 'materialize-css'
 const URL = 'http://localhost:8000'
@@ -9,11 +9,42 @@ const Signup = () => {
   const [ last_name, setLast_name ] = useState('')
   const [ password, setPassword ] = useState('')
   const [ email, setEmail ] = useState('')
+  const [ image, setImage ] = useState('')
+  const [ url, setUrl ] = useState(undefined)
   const navigate = useNavigate();
 
-  const PostData = () => {
+
+  useEffect(() =>{
+    if(url){
+      uploadFields()
+    }
+  }, [url])
+
+  const uploadPic = () => {
+    const data = new FormData()
+    data.append('file', image)
+    data.append('upload_preset', 'coffeeaddict')
+    data.append('cloud_name', 'raphtis3122')
+    fetch('https://api.cloudinary.com/v1_1/raphtis3122/image/upload', {
+      method: 'post',
+      body: data
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.error){
+        M.toast({html: 'Please add all fields!', classes:'#e53935 red darken-1', displayLength:'1000'})
+      }else{
+      setUrl(data.url)
+      }
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
+  const uploadFields = () => {
     if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
-      M.toast({html: 'Invalid Email Address', classes:'#e53935 red darken-1'})
+      M.toast({html: 'Invalid Email Address', classes:'#e53935 red darken-1', displayLength:'1000'})
       return
     }
     fetch( URL + '/signup', {
@@ -25,20 +56,29 @@ const Signup = () => {
         first_name,
         last_name,
         password,
-        email
+        email,
+        pic:url
       })
     })
     .then(res => res.json())
     // ERROR/SUCCESS POP UP
     .then(data => {
       if(data.error){
-        M.toast({html: data.error, classes:'#e53935 red darken-1'})
+        M.toast({html: data.error, classes:'#e53935 red darken-1', displayLength:'1000'})
       }else{
-        M.toast({html: data.message, classes:'#43a047 green darken-1'})
+        M.toast({html: data.message, classes:'#43a047 green darken-1', displayLength:'1000'})
         navigate('/login', {replace: true});
       }
     })
     .catch((err) => console.log(err))
+  }
+
+  const PostData = () => {
+    if(image){
+      uploadPic()
+    }else{
+      uploadFields()
+    }
   }
 
   return (
@@ -72,6 +112,19 @@ const Signup = () => {
             <i className="material-icons prefix">password</i>
               <input id="password" type="password" className="validate" value={password} onChange={(e) => setPassword(e.target.value)} />
               <label htmlFor="password">Password</label>
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="file-field input-field s6">
+              <div className="btn select_img_button">
+                <span>Select Profile Image</span>
+                <input type="file" onChange={(e) => setImage(e.target.files[0])}/>
+              </div>
+
+              <div className="file-path-wrapper">
+                <input className="file-path validate" type="text" />
+              </div>
             </div>
           </div>
         </form>

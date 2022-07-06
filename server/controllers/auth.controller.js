@@ -18,7 +18,7 @@ module.exports.protected = (req, res) => {
 
 // SIGNUP
 module.exports.signup = (req, res) => {
-  const { first_name, last_name, email, password } = req.body
+  const { first_name, last_name, email, password, pic } = req.body
   if(!email || !password || !first_name || !last_name){
     return res.json({ error: 'Please add all fields.'})
   }
@@ -35,7 +35,8 @@ module.exports.signup = (req, res) => {
             email, 
             password:hashedPassword,
             first_name,
-            last_name
+            last_name, 
+            photo:pic
           })
           user.save()
             .then(user => {
@@ -70,8 +71,8 @@ module.exports.login = (req, res) => {
           if(doMatch){
             // GENERATE JWT TOKEN ON LOGIN
             const token = jwt.sign({ _id:savedUser._id}, JWT_SECRET)
-            const { _id, first_name, last_name, email, followers, following } = savedUser
-            res.json({ token, user:{_id, first_name, last_name, email, followers, following}})
+            const { _id, first_name, last_name, email, followers, following, photo } = savedUser
+            res.json({ token, user:{_id, first_name, last_name, email, followers, following, photo}})
           }else{
             return res.status(422).json({ error: 'Invalid email or password!'})
           }

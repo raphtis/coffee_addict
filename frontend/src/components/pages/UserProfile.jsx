@@ -5,12 +5,11 @@ import { useParams } from 'react-router-dom'
 const URL = 'http://localhost:8000'
 const UserProfile = () => {
   const [ userProfile, setProfile ] = useState(null)
-  const [ showFollow, setShowFollow ] = useState(true)
   const { state, dispatch } = useContext(UserContext)
   const {userId} = useParams()
 
 
-
+  const [ showFollow, setShowFollow ] = useState(state?!state.followers.includes(userId):true)
   useEffect(() => {
     fetch( URL + `/user/${userId}`, {
       headers:{
@@ -81,7 +80,7 @@ const UserProfile = () => {
       <div className='profile-container'>
         <div>
           <img className='profile-img'
-          src='https://images.unsplash.com/photo-1559496417-e7f25cb247f3?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=928'
+          src={userProfile.user.photo}
           alt='User coffee'/>
         </div>
         <div>

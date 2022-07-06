@@ -11,9 +11,11 @@ const Navbar = () => {
   const renderList = () => {
     if(state){
       return[
-        <li><NavLink to="/profile"><i className='material-icons'>person_outline
+        <li><NavLink to="/home"><i className='material-icons'>explore
         </i></NavLink></li>,
         <li><NavLink to="/create-post"><i className='material-icons'>add_circle_outline
+        </i></NavLink></li>,
+        <li><NavLink to="/profile"><i className='material-icons'>person_outline
         </i></NavLink></li>,
         <li>
           <div 
@@ -21,7 +23,7 @@ const Navbar = () => {
             type="submit" onClick={()=>{
           localStorage.clear()
           dispatch({ type: "CLEAR"})
-          M.toast({html: 'Successfully logged out!', classes: '#e53935 red darken-1'})
+          M.toast({html: 'Successfully logged out!', classes: '#e53935 red darken-1', displayLength:'1000'})
           navigate('/login', {replace: true})
 
         }}

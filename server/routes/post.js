@@ -7,7 +7,7 @@ const router = Router();
 
 router.get('/all_posts', requireLogin, getAll)
 router.get('/my_posts', requireLogin, myPosts)
-router.get('/subscribed_posts',requireLogin, getSubPost)
+router.get('/subscribed_posts', requireLogin, getSubPost)
 
 router.post('/createpost', requireLogin, createPost)
 

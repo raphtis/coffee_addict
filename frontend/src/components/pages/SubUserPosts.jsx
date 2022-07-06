@@ -6,14 +6,14 @@ import { NavLink } from 'react-router-dom'
 const URL = 'http://localhost:8000'
 
 
-const Home = () => {
+const SubUserPosts = () => {
   const [ data, setData ] = useState([])
   const { state } = useContext(UserContext)
   const inputEl = useRef(null);
 
   // SHOW ALL POSTS IN FEED
   useEffect(() => {
-    fetch( URL + '/all_posts', {
+    fetch( URL + '/subscribed_posts', {
       headers: {
         'Authorization': "Bearer "+ localStorage.getItem('jwt')
       }
@@ -221,4 +221,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default SubUserPosts
