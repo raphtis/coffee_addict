@@ -11,7 +11,7 @@ const Navbar = () => {
   const renderList = () => {
     if(state){
       return[
-        <li><NavLink to="/home"><i className='material-icons'>explore
+        <li><NavLink to="/explore"><i className='material-icons'>explore
         </i></NavLink></li>,
         <li><NavLink to="/create-post"><i className='material-icons'>add_circle_outline
         </i></NavLink></li>,

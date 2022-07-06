@@ -30,7 +30,7 @@ const Routing = () => {
   }, [dispatch])
   return(
     <Routes>
-      <Route path='/home' element={<Home />} />
+      <Route path='/explore' element={<Home />} />
       <Route path='/login' element={<Login />} />
       <Route path='/signup' element={<Signup />} />
       <Route exact path='/profile' element={<Profile />} />
