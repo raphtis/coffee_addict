@@ -76,7 +76,6 @@ a {
   cursor: pointer;
 }
 
-
 .button_container {
   text-align: center;
 }
@@ -98,6 +97,7 @@ a {
   width: 100px;
   height: 100px;
   border-radius: 50%;
+  padding-left: 5px;
 }
 
 .profile-container {

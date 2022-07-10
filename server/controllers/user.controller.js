@@ -67,14 +67,14 @@ module.exports.unfollow = (req, res) => {
 
 // UPDATE PROFILE PIC
 module.exports.updatePic = (req, res) => {
-  User.findByIdAndUpdate(req.user._id, {$set:{pic:req.body.pic}},
-    {new:true}),
-    (err,result)=>{
+  User.findByIdAndUpdate(req.user._id, {$set:{photo:req.body.pic}},
+    {new:true},
+    (err, result)=>{
       if(err){
-        return res.status(422).json({error:'Picture cannot post!'})
+        return res.status(422).json({ error: 'Picture cannot be updated!'})
       }
       res.json(result)
-    }
+    })
 }
 
 // USER SEARCH

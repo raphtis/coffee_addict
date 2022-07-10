@@ -162,7 +162,6 @@ const Home = () => {
         data.map(item => {
           return(
             <div key={item._id} className='card home-card'>
-              {console.log('HERE')}
               <h5 className='post-username'>
                 {/* IF USER CLICKS OWN POST IN FEED LINKS TO USERS PROFILE */}
                 <NavLink to={item.postedBy._id !== state._id? '/profile/'+ item.postedBy._id: '/profile'}>{item.postedBy.first_name}</NavLink>
