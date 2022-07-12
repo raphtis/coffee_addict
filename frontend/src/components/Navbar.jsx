@@ -40,7 +40,7 @@ const Navbar = () => {
 
   return (
     <nav>
-    <div className="nav-wrapper white">
+    <div className="nav-wrapper">
       <NavLink to='/' alt="Name of site" className='brand-logo left'>Coffee Addict</NavLink>
       <ul id="nav-mobile" className="right">
         {renderList()}

@@ -32,7 +32,7 @@ const Signup = () => {
     .then(res => res.json())
     .then(data => {
       if(data.error){
-        M.toast({html: 'Please add all fields!', classes:'#e53935 red darken-1', displayLength:'1000'})
+        M.toast({html: 'Please add all fields!', classes:'#F2C500 yellow darken-2', displayLength:'1000'})
       }else{
       setUrl(data.url)
       }
@@ -44,7 +44,7 @@ const Signup = () => {
 
   const uploadFields = () => {
     if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
-      M.toast({html: 'Invalid Email Address', classes:'#e53935 red darken-1', displayLength:'1000'})
+      M.toast({html: 'Invalid Email Address', classes:'#F2C500 yellow darken-2', displayLength:'1000'})
       return
     }
     fetch( URL + '/signup', {
@@ -64,7 +64,7 @@ const Signup = () => {
     // ERROR/SUCCESS POP UP
     .then(data => {
       if(data.error){
-        M.toast({html: data.error, classes:'#e53935 red darken-1', displayLength:'1000'})
+        M.toast({html: data.error, classes:'#F2C500 yellow darken-2', displayLength:'1000'})
       }else{
         M.toast({html: data.message, classes:'#43a047 green darken-1', displayLength:'1000'})
         navigate('/login', {replace: true});

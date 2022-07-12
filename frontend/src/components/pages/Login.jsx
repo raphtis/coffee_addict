@@ -14,7 +14,7 @@ const Login = () => {
   const PostData = () => {
     // eslint-disable-next-line no-useless-escape
     if(!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email)){
-      M.toast({html: 'Invalid Email Address', classes:'#e53935 red darken-1', displayLength:'1000'})
+      M.toast({html: 'Invalid Email Address', classes:'#F2C500 yellow darken-2', displayLength:'1000'})
       return
     }
     fetch( URL + '/login', {
@@ -31,7 +31,7 @@ const Login = () => {
     // ERROR/SUCCESS POP UP
     .then(data => {
       if(data.error){
-        M.toast({html: data.error, classes:'#e53935 red darken-1', displayLength:'1000'})
+        M.toast({html: data.error, classes:'#F2C500 yellow darken-2', displayLength:'1000'})
       }else{
         localStorage.setItem('jwt', data.token)
         localStorage.setItem('user', JSON.stringify(data.user))

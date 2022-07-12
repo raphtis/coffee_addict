@@ -73,7 +73,7 @@ const Home = () => {
         }
       })
       setData(newData);
-      M.toast({html: "You unliked the post!", classes:'#e53935 red darken-1', displayLength:'1000'})
+      M.toast({html: "You unliked the post!", classes:'#F2C500 yellow darken-2', displayLength:'1000'})
     }).catch(err=> {
       console.log(err)
     })
@@ -94,7 +94,7 @@ const Home = () => {
         return item._id !== result._id
       })
       setData(newData)
-      M.toast({html: 'Deleted post successfully!', classes: '#e53935 red darken-1', displayLength:'1000'})
+      M.toast({html: 'Deleted post successfully!', classes:'#F2C500 yellow darken-2', displayLength:'1000'})
     })
   }
   // COMMENT ON POST
@@ -144,7 +144,7 @@ const Home = () => {
         }
       })
       setData(newData)
-      M.toast({html: "Comment deleted successfully!", classes:'#e53935 red darken-1', displayLength:'1000'})
+      M.toast({html: "Comment deleted successfully!", classes:'#F2C500 yellow darken-2', displayLength:'1000'})
     })
   }
 
@@ -157,6 +157,8 @@ const Home = () => {
 
 
   return (
+    <div>
+      <h2 className='signup_heading'>Explore Feed</h2>
     <div className="home">
       {
         data.map(item => {
@@ -217,6 +219,7 @@ const Home = () => {
           )
         })
       }
+    </div>
     </div>
   )
 }

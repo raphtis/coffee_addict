@@ -1,22 +1,32 @@
 * {
   font-family: 'Inconsolata', monospace;
+  scroll-behavior: smooth;
+  background-color: #F3ECE0;
+}
+
+h2, h3, h6, p, span  {
+  color: #26363C;
+}
+
+span, span:hover {
+  background-color: #D66E22;
 }
 
 a { 
-  color: black !important;
+  color: #26363C !important;
 }
 
 .validate {
-  background-color: #52796F;
+  background-color: #26363C;
 }
 
 .input-field label {
-  color: #626262;
+  color: #858370;
 }
 
 .logout-button {
   border: none;
-  background-color: white;
+  background-color: #F3ECE0;
   color: black;
   cursor: pointer;
   float: right;
@@ -26,7 +36,7 @@ a {
 }
 
 .logout-button:hover, .logout-button:active {
-  background-color: white;
+  background-color: #F3ECE0;
 }
 
 .signup_heading {
@@ -55,6 +65,16 @@ a {
   max-width: 500px;
   height: max-content;
   margin: 26px auto;
+  background-color: #F3ECE0;
+}
+
+.login_container, .signup_container, .createpost_container {
+  max-width: 500px;
+  margin: 26px auto;
+}
+
+.brand-logo {
+  background-color: #F3ECE0;
 }
 
 .post-username {
@@ -62,7 +82,7 @@ a {
 }
 
 .like_button {
-  color: red;
+  color: #D66E22;
   cursor: pointer;
 }
 
@@ -85,7 +105,7 @@ a {
 }
 
 .select_img_button {
-  background-color: #F06543;
+  background-color: #D66E22;
 }
 
 .profile-page-container {
@@ -147,12 +167,12 @@ a {
 }
 
 .input-field input[type=text]:focus {
-  border-bottom: 1px solid #F06543 !important;
-  box-shadow: 0 1px 0 0 #F06543 !important;
+  border-bottom: 1px solid #D66E22 !important;
+  box-shadow: 0 1px 0 0 #D66E22 !important;
 }
 
 .input-field input[type=password]:focus {
-  border-bottom: 1px solid #4fc3f7 !important;
-  box-shadow: 0 1px 0 0 #4fc3f7 !important;
+  border-bottom: 1px solid #858370 !important;
+  box-shadow: 0 1px 0 0 #858370 !important;
 }
 

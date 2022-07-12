@@ -32,7 +32,7 @@ const CreatePost = () => {
     .then(res => res.json())
     .then(data => {
       if(data.error){
-        M.toast({html: data.error, classes:'#e53935 red darken-1', displayLength:'1000'})
+        M.toast({html: data.error, classes:'#F2C500 yellow darken-2', displayLength:'1000'})
       }else{
         M.toast({html: 'Created post successfully!', classes: '#43a047 green darken-1', displayLength:'1000'})
         navigate('/', {replace: true});
