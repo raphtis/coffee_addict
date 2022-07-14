@@ -131,7 +131,6 @@ const Signup = () => {
 
         <div className='button_container'>
           <button className="btn waves-effect waves-light signup_button" type="submit" name="action" onClick={(e) => PostData(e.target.value)}>Sign Up
-            <i className="material-icons right">send</i>
           </button>
         </div>
 

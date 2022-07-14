@@ -1,32 +1,31 @@
 * {
   font-family: 'Inconsolata', monospace;
   scroll-behavior: smooth;
-  background-color: #F3ECE0;
+  background-color: #F9EDDD;
 }
 
 h2, h3, h6, p, span  {
-  color: #26363C;
+  color: #5A5E58;
 }
 
 span, span:hover {
-  background-color: #D66E22;
+  background-color: #E09732;
 }
 
 a { 
-  color: #26363C !important;
+  color: #5A5E58 !important;
 }
 
-.validate {
-  background-color: #26363C;
+nav ul a:hover {
+  background-color: #F9EDDD;
 }
 
-.input-field label {
-  color: #858370;
-}
+
+/* BUTTONS SECTION */
 
 .logout-button {
   border: none;
-  background-color: #F3ECE0;
+  background-color: #F9EDDD;
   color: black;
   cursor: pointer;
   float: right;
@@ -36,12 +35,59 @@ a {
 }
 
 .logout-button:hover, .logout-button:active {
-  background-color: #F3ECE0;
+  background-color: #F9EDDD;
 }
+
+.like_button {
+  color: #E09732;
+  cursor: pointer;
+}
+
+.dislike_button {
+  cursor: pointer;
+}
+
+.comment_delete {
+  cursor: pointer;
+  float: right;
+  align-items: center;
+}
+
+.delete_button {
+  float: right;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.button_container {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.signup_button {
+  background-color: #96AFA0;
+  font-family: 'Inconsolata', monospace;
+}
+
+.signup_button:hover{
+  background-color: #E09732 !important;
+}
+
+.select_img_button, span {
+  background-color: #96AFA0;
+  color: #FFFF;
+}
+
+.select_img_button:hover, span:hover {
+  background-color: #96AFA0;
+}
+
+/* PAGE LAYOUT */
 
 .signup_heading {
   text-align: center;
 }
+
 
 .signup_container, .login_container, .createpost_container {
   display: grid;
@@ -65,7 +111,7 @@ a {
   max-width: 500px;
   height: max-content;
   margin: 26px auto;
-  background-color: #F3ECE0;
+  background-color: #F9EDDD;
 }
 
 .login_container, .signup_container, .createpost_container {
@@ -74,38 +120,11 @@ a {
 }
 
 .brand-logo {
-  background-color: #F3ECE0;
+  background-color: #F9EDDD;
 }
 
 .post-username {
   margin-left: 10px;
-}
-
-.like_button {
-  color: #D66E22;
-  cursor: pointer;
-}
-
-.dislike_button {
-  cursor: pointer;
-}
-
-.delete_button {
-  float: right;
-  margin-right: 15px;
-  cursor: pointer;
-}
-
-.button_container {
-  text-align: center;
-}
-
-.signup_button {
-  background-color: #52796F;
-}
-
-.select_img_button {
-  background-color: #D66E22;
 }
 
 .profile-page-container {
@@ -145,11 +164,25 @@ a {
   margin-bottom: 20px;
 }
 
-.comment_delete {
-  cursor: pointer;
-  float: right;
-  align-items: center;
+
+
+/* NOTIFICATION SECTION */
+#toast-container {
+  top: 30px;
+  right: 20px;
+  left: auto;
 }
+
+/* INPUT SECTION */
+
+.validate {
+  background-color: #26363C;
+}
+
+.input-field label {
+  color: #858370;
+}
+
 
 .comment-input {
   width: 20px;
@@ -160,18 +193,35 @@ a {
   align-items: center;
 }
 
-#toast-container {
-  top: 30px;
-  right: 20px;
-  left: auto;
+
+.comment-input-wrapper input[type=text]:focus {
+  border-bottom: 1px solid #E09732 !important;
+  box-shadow: 0 1px 0 0 #E09732 !important;
+  color: #26363C;
 }
+
 
 .input-field input[type=text]:focus {
-  border-bottom: 1px solid #D66E22 !important;
-  box-shadow: 0 1px 0 0 #D66E22 !important;
+  border-bottom: 1px solid #E09732 !important;
+  box-shadow: 0 1px 0 0 #E09732 !important;
 }
 
-.input-field input[type=password]:focus {
+.input-field input[type=text]:focus + label {
+  color: #E09732 !important;
+}
+
+.input-field .prefix.active {
+  color: #E09732 !important;
+}
+.input-field input[type=email]:focus + label {
+  color: #E09732 !important;
+}
+
+.input-field input[type=password]:focus + label {
+  color: #E09732 !important;
+}
+
+.input-field input[type=email], [type=password]:focus {
   border-bottom: 1px solid #858370 !important;
   box-shadow: 0 1px 0 0 #858370 !important;
 }

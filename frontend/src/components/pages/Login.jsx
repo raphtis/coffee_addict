@@ -66,8 +66,7 @@ const Login = () => {
         </form>
 
         <div className="button_container">
-          <button className="btn waves-effect waves-light signup_button" type="submit" name="action" onClick={PostData}>Login
-          <i className="material-icons right">send</i>
+          <button className="btn signup_button" type="submit" name="action" onClick={PostData}>Login
           </button>
         </div>
 
