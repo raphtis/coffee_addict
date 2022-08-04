@@ -35,7 +35,7 @@ const CreatePost = () => {
         M.toast({html: data.error, classes:'#F2C500 yellow darken-2', displayLength:'1000'})
       }else{
         M.toast({html: 'Created post successfully!', classes: '#43a047 green darken-1', displayLength:'1000'})
-        navigate('/', {replace: true});
+        navigate('/explore', {replace: true});
       }
     })
     .catch((err) => console.log(err))

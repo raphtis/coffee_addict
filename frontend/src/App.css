@@ -26,7 +26,7 @@ nav ul a:hover {
 .logout-button {
   border: none;
   background-color: #F9EDDD;
-  color: black;
+  color: #5A5E58;
   cursor: pointer;
   float: right;
   margin-top: 18px;
@@ -71,6 +71,10 @@ nav ul a:hover {
 
 .signup_button:hover{
   background-color: #E09732 !important;
+}
+
+.signup_button i{
+  background-color: #96AFA0;
 }
 
 .select_img_button, span {
@@ -121,6 +125,7 @@ nav ul a:hover {
 
 .brand-logo {
   background-color: #F9EDDD;
+  margin-left: 10px;
 }
 
 .post-username {
@@ -199,7 +204,6 @@ nav ul a:hover {
   box-shadow: 0 1px 0 0 #E09732 !important;
   color: #26363C;
 }
-
 
 .input-field input[type=text]:focus {
   border-bottom: 1px solid #E09732 !important;
