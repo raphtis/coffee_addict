@@ -36,7 +36,7 @@ const Login = () => {
         localStorage.setItem('jwt', data.token)
         localStorage.setItem('user', JSON.stringify(data.user))
         dispatch({type: 'USER', payload:data.user})
-        M.toast({html: "Logged in successfully!", classes:'#43a047 green darken-1', displayLength:'1000'})
+        M.toast({html: "Logged in successfully!", classes: '#a5d6a7 green lighten-3', displayLength:'1000'})
         navigate('/', {replace: true});
       }
     })

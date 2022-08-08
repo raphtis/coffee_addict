@@ -1,7 +1,7 @@
 * {
   font-family: 'Inconsolata', monospace;
   scroll-behavior: smooth;
-  background-color: #F9EDDD;
+  /* background-color: #2F3E46; */
 }
 
 h2, h3, h6, p, span  {
@@ -9,7 +9,7 @@ h2, h3, h6, p, span  {
 }
 
 span, span:hover {
-  background-color: #E09732;
+  background-color: #d7a764;
 }
 
 a { 
@@ -17,7 +17,7 @@ a {
 }
 
 nav ul a:hover {
-  background-color: #F9EDDD;
+  background-color: #CAD2C5;
 }
 
 
@@ -25,7 +25,7 @@ nav ul a:hover {
 
 .logout-button {
   border: none;
-  background-color: #F9EDDD;
+  background-color: #CAD2C5;
   color: #5A5E58;
   cursor: pointer;
   float: right;
@@ -35,11 +35,11 @@ nav ul a:hover {
 }
 
 .logout-button:hover, .logout-button:active {
-  background-color: #F9EDDD;
+  background-color: #CAD2C5;
 }
 
 .like_button {
-  color: #E09732;
+  color: #d7a764;
   cursor: pointer;
 }
 
@@ -65,25 +65,25 @@ nav ul a:hover {
 }
 
 .signup_button {
-  background-color: #96AFA0;
+  background-color: #335C67;
   font-family: 'Inconsolata', monospace;
 }
 
 .signup_button:hover{
-  background-color: #E09732 !important;
+  background-color: #d7a764 !important;
 }
 
 .signup_button i{
-  background-color: #96AFA0;
+  background-color: #335C67;
 }
 
 .select_img_button, span {
-  background-color: #96AFA0;
+  background-color: #335C67;
   color: #FFFF;
 }
 
 .select_img_button:hover, span:hover {
-  background-color: #96AFA0;
+  background-color: #335C67;
 }
 
 /* PAGE LAYOUT */
@@ -101,7 +101,7 @@ nav ul a:hover {
   -webkit-box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
   -moz-box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
   box-shadow: 0px 5px 33px -21px rgba(66, 68, 90, 1);
-
+  background-color: #CAD2C5;
 }
 
 .home {
@@ -115,7 +115,7 @@ nav ul a:hover {
   max-width: 500px;
   height: max-content;
   margin: 26px auto;
-  background-color: #F9EDDD;
+  background-color: #CAD2C5;
 }
 
 .login_container, .signup_container, .createpost_container {
@@ -124,8 +124,12 @@ nav ul a:hover {
 }
 
 .brand-logo {
-  background-color: #F9EDDD;
+  background-color: #CAD2C5;
   margin-left: 10px;
+}
+
+.nav-wrapper {
+  background-color: #CAD2C5;
 }
 
 .post-username {
@@ -203,6 +207,10 @@ nav ul a:hover {
   border-bottom: 1px solid #E09732 !important;
   box-shadow: 0 1px 0 0 #E09732 !important;
   color: #26363C;
+}
+
+.input-field .comment-input input[type=text] {
+  color: red;
 }
 
 .input-field input[type=text]:focus {

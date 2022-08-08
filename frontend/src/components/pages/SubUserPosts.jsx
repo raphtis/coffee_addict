@@ -46,7 +46,7 @@ const SubUserPosts = () => {
         }
       })
       setData(newData);
-      M.toast({html: 'You liked the post!', classes: '#43a047 green darken-1', displayLength:'1000'})
+      M.toast({html: 'You liked the post!', classes: '#a5d6a7 green lighten-3', displayLength:'1000'})
     }).catch(err=> {
       console.log(err)
     })
@@ -120,7 +120,7 @@ const SubUserPosts = () => {
         }
       })
       setData(newData);
-      M.toast({html: "Comment submitted successfully!", classes:'#43a047 green darken-1', displayLength:'1000'})
+      M.toast({html: "Comment submitted successfully!", classes: '#a5d6a7 green lighten-3', displayLength:'1000'})
     }).catch(err=>{
       console.log(err)
     })
@@ -183,7 +183,7 @@ const SubUserPosts = () => {
                 }
 
                 <h6>{item.likes.length} likes</h6>
-                <h6>Title - {item.title}</h6>
+                <h6>Name - {item.title}</h6>
                 <p>Brand - {item.brand}</p>
                 <p>Blend - {item.blend}</p>
                 <p>Review - {item.description}</p>
@@ -204,7 +204,8 @@ const SubUserPosts = () => {
                   e.preventDefault()
                   makeComment(e.target[0].value, item._id)
                 }}>
-                  <div className="comment-input-wrapper">
+                  <div className="comment-input-wrapper input-field">
+                    <label>Leave a Comment Here</label>
                     <input 
                       type="text" 
                       className="comment-input"

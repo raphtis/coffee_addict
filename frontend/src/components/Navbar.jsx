@@ -23,7 +23,7 @@ const Navbar = () => {
             type="submit" onClick={()=>{
           localStorage.clear()
           dispatch({ type: "CLEAR"})
-          M.toast({html: 'Successfully logged out!', classes: '#e53935 red darken-1', displayLength:'1000'})
+          M.toast({html: 'Successfully logged out!', classes: '#ef5350 red lighten-1', displayLength:'1000'})
           navigate('/login', {replace: true})
 
         }}
